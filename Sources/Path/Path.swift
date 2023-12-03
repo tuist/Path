@@ -620,7 +620,7 @@ extension Path {
             // in fact, it might well be best to return a custom iterator so we
             // don't have to allocate everything up-front.  It would be backed by
             // the path string and just return a slice at a time.
-            let components = string.components(separatedBy: "/").filter { !$0.isEmpty }
+            let components = string.split(separator: "/").map(String.init).filter { !$0.isEmpty }
 
             if string.hasPrefix("/") {
                 return ["/"] + components
@@ -986,12 +986,6 @@ extension AbsolutePath {
     /// in any way.
     public func isDescendantOfOrEqual(to ancestor: AbsolutePath) -> Bool {
         components.starts(with: ancestor.components)
-    }
-}
-
-extension PathValidationError: CustomNSError {
-    public var errorUserInfo: [String: Any] {
-        [NSLocalizedDescriptionKey: description]
     }
 }
 
