@@ -90,5 +90,28 @@ jobs:
         swift-version: ${{ matrix.swift-version }}
     - name: Install asdf & tools
       uses: asdf-vm/actions/install@v2
-    - name: Build with debug mode.
-      run: swift build --configuration release -Xswiftc -enable-testing -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+    - name: Build
+      run: tuist build
+  lint:
+    name: Lint
+    defaults:
+      run:
+        working-directory: '.'
+    strategy:
+      matrix:
+        os:
+          - ubuntu-22.04
+        swift-version:
+          - '5.9'
+        swift-compat-ver:
+          - '5'
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: SwiftyLab/setup-swift@latest
+      with:
+        swift-version: ${{ matrix.swift-version }}
+    - name: Install asdf & tools
+      uses: asdf-vm/actions/install@v2
+    - name: Lint
+      run: workspace/lint
