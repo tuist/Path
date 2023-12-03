@@ -30,7 +30,7 @@ jobs:
           - macOS-13
           - windows-2022
         swift-version:
-          - '5.9'
+          - '5.9.0'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}
