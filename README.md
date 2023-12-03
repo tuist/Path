@@ -7,7 +7,7 @@
 
 Apple discontinued the maintenance of [swift-tools-support-core](https://github.com/apple/swift-tools-support-core),
 which included useful `RelativePath` and `AbsolutePath` abstractions to model file paths.
-This repository is a fork of the last version of `swift-tools-support-core` that included these abstractions.
+This repository is a fork of the sha [`8732961d5119731aa115a4dadd2a01150b99de16`](https://github.com/apple/swift-tools-support-core/commit/8732961d5119731aa115a4dadd2a01150b99de16) of `swift-tools-support-core`. Its license is located under [`./LICENSES`](./LICENSES).
 
 ## Development
 
