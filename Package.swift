@@ -26,10 +26,6 @@ let package = Package(
             linkerSettings: [
                 .linkedLibrary("Pathcch", .when(platforms: [.windows])),
             ]
-        ),
-        .testTarget(
-            name: "PathTests",
-            dependencies: ["Path"]
-        ),
+        )
     ]
 )

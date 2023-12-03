@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  spm_build:
     name: SPM Build
     defaults:
       run:
@@ -69,3 +69,26 @@ jobs:
       run: |
         rm -rf $(cd .build/release && pwd -P)
         swift build --configuration release -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+  tuist_build:
+    name: Tuist Build
+    defaults:
+      run:
+        working-directory: '.'
+    strategy:
+      matrix:
+        os:
+          - macOS-13
+        swift-version:
+          - '5.9'
+        swift-compat-ver:
+          - '5'
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: SwiftyLab/setup-swift@latest
+      with:
+        swift-version: ${{ matrix.swift-version }}
+    - name: Install asdf & tools
+      uses: asdf-vm/actions/install@v2
+    - name: Build with debug mode.
+      run: swift build --configuration release -Xswiftc -enable-testing -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
