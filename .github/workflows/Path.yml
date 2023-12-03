@@ -28,7 +28,7 @@ jobs:
           - ubuntu-22.04
           - macOS-13
         swift-version:
-          - '5.9.0'
+          - '5.9'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}
