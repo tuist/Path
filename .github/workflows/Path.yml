@@ -14,7 +14,7 @@ on:
       - '.github/workflows/*.yml'
 
 concurrency:
-  group: path-${{ github.head_ref }}
+  group: path-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
