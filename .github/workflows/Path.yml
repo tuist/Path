@@ -89,7 +89,7 @@ jobs:
         with:
           swift-version: ${{ matrix.swift-version }}
       - name: Install asdf & tools
-        uses: asdf-vm/actions/install@v2
+        uses: asdf-vm/actions/install@v3
       - name: Build
         run: tuist build
   lint:
@@ -112,6 +112,6 @@ jobs:
         with:
           swift-version: ${{ matrix.swift-version }}
       - name: Install asdf & tools
-        uses: asdf-vm/actions/install@v2
+        uses: asdf-vm/actions/install@v3
       - name: Lint
         run: workspace/lint
