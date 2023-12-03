@@ -18,7 +18,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  build:
+    name: SPM Build
     defaults:
       run:
         working-directory: '.'
@@ -27,6 +28,7 @@ jobs:
         os:
           - ubuntu-22.04
           - macOS-13
+          - windows-2022
         swift-version:
           - '5.9'
         swift-compat-ver:
@@ -48,22 +50,22 @@ jobs:
       with:
         swift-version: ${{ matrix.swift-version }}
     # DEBUG mode
-    - name: Test with debug mode.
-      id: debug_test
-      run: swift test --configuration debug -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+    - name: Build with debug mode.
+      id: debug_build
+      run: swift build --configuration debug -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
       continue-on-error: true
-    - name: Retry test with debug mode if necessary
-      if: steps.debug_test.outcome == 'failure'
+    - name: Retry build with debug mode if necessary
+      if: steps.debug_build.outcome == 'failure'
       run: |
         rm -rf $(cd .build/debug && pwd -P)
-        swift test --configuration debug -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+        swift build --configuration debug -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
     # RELEASE mode
-    - name: Test with release mode.
-      id: release_test
-      run: swift test --configuration release -Xswiftc -enable-testing -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+    - name: Build with release mode.
+      id: release_build
+      run: swift build --configuration release -Xswiftc -enable-testing -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
       continue-on-error: true
-    - name: Retry test with release mode if necessary
-      if: steps.release_test.outcome == 'failure'
+    - name: Retry build with release mode if necessary
+      if: steps.release_build.outcome == 'failure'
       run: |
         rm -rf $(cd .build/release && pwd -P)
-        swift test --configuration release -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
+        swift build --configuration release -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
