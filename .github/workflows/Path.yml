@@ -30,7 +30,7 @@ jobs:
           - macOS-13
           - windows-2022
         swift-version:
-          - '5.9.0'
+          - '5.9'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}
@@ -46,7 +46,7 @@ jobs:
           build-${{ github.workspace }}-${{ runner.os }}-${{ matrix.swift-version }}-
           build-${{ github.workspace }}-${{ runner.os }}-
           build-${{ github.workspace }}-
-    - uses: swift-actions/setup-swift@main
+    - uses: SwiftyLab/setup-swift@latest
       with:
         swift-version: ${{ matrix.swift-version }}
     # DEBUG mode
