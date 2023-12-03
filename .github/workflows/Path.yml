@@ -84,14 +84,14 @@ jobs:
           - '5'
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: SwiftyLab/setup-swift@latest
-      with:
-        swift-version: ${{ matrix.swift-version }}
-    - name: Install asdf & tools
-      uses: asdf-vm/actions/install@v2
-    - name: Build
-      run: tuist build
+      - uses: actions/checkout@v4
+      - uses: SwiftyLab/setup-swift@latest
+        with:
+          swift-version: ${{ matrix.swift-version }}
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - name: Build
+        run: tuist build
   lint:
     name: Lint
     defaults:
@@ -107,11 +107,11 @@ jobs:
           - '5'
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: SwiftyLab/setup-swift@latest
-      with:
-        swift-version: ${{ matrix.swift-version }}
-    - name: Install asdf & tools
-      uses: asdf-vm/actions/install@v2
-    - name: Lint
-      run: workspace/lint
+      - uses: actions/checkout@v4
+      - uses: SwiftyLab/setup-swift@latest
+        with:
+          swift-version: ${{ matrix.swift-version }}
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - name: Lint
+        run: workspace/lint
