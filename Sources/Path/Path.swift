@@ -1024,18 +1024,21 @@ extension AbsolutePath {
     @_disfavoredOverload
     @available(*, deprecated, message: "use throwing `init(validating:)` variant instead")
     public init(_ absStr: String) {
+        // swiftlint:disable:next force_try
         try! self.init(validating: absStr)
     }
 
     @_disfavoredOverload
     @available(*, deprecated, message: "use throwing `init(validating:relativeTo:)` variant instead")
     public init(_ str: String, relativeTo basePath: AbsolutePath) {
+        // swiftlint:disable:next force_try
         try! self.init(validating: str, relativeTo: basePath)
     }
 
     @_disfavoredOverload
     @available(*, deprecated, message: "use throwing variant instead")
     public init(_ absPath: AbsolutePath, _ relStr: String) {
+        // swiftlint:disable:next force_try
         try! self.init(absPath, validating: relStr)
     }
 }
@@ -1046,6 +1049,7 @@ extension RelativePath {
     @_disfavoredOverload
     @available(*, deprecated, message: "use throwing variant instead")
     public init(_ string: String) {
+        // swiftlint:disable:next force_try
         try! self.init(validating: string)
     }
 }
