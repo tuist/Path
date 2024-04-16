@@ -70,8 +70,7 @@ jobs:
       - uses: SwiftyLab/setup-swift@latest
         with:
           swift-version: ${{ matrix.swift-version }}
-      - name: Install asdf & tools
-        uses: asdf-vm/actions/install@v3
+      - uses: jdx/mise-action@v2
       - name: Build
         run: tuist build
   lint:
@@ -90,7 +89,6 @@ jobs:
       - uses: SwiftyLab/setup-swift@latest
         with:
           swift-version: ${{ matrix.swift-version }}
-      - name: Install asdf & tools
-        uses: asdf-vm/actions/install@v3
+      - uses: jdx/mise-action@v2
       - name: Lint
         run: mise run lint
