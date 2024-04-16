@@ -93,4 +93,4 @@ jobs:
       - name: Install asdf & tools
         uses: asdf-vm/actions/install@v3
       - name: Lint
-        run: make workspace/lint
+        run: mise run lint
