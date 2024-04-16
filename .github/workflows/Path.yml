@@ -17,6 +17,9 @@ concurrency:
   group: path-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  MISE_EXPERIMENTAL: 1
+
 jobs:
   spm_build:
     name: SPM Build
