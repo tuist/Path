@@ -596,7 +596,7 @@ extension Path {
             // FIXME: This method seems too complicated; it should be simplified,
             //        if possible, and certainly optimized (using UTF8View).
             // Check for a special case of the root directory.
-            if string.first == "/" {
+            if ( (string.count == 1) ? string[string.startIndex] : nil) == "/" {
                 // Root directory, so the basename is a single path separator (the
                 // root directory is special in this regard).
                 return "/"
