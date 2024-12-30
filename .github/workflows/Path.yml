@@ -22,15 +22,35 @@ env:
   TUIST_CONFIG_CLOUD_TOKEN: ${{ secrets.TUIST_CONFIG_CLOUD_TOKEN }}
 
 jobs:
+  spm_test:
+    name: SPM Build
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+        swift-version:
+          - '6.0'
+        swift-compat-ver:
+          - '5'
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: SwiftyLab/setup-swift@latest
+      with:
+        swift-version: ${{ matrix.swift-version }}
+    - run: swift test --configuration debug -Xswiftc -swift-version -Xswiftc ${{ matrix.swift-compat-ver }}
   spm_build:
     name: SPM Build
     strategy:
       matrix:
         os:
-          - ubuntu-22.04
-          - macOS-13
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
         swift-version:
-          - '5.9'
+          - '6.0'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}
@@ -62,9 +82,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-13
+          - macOS-latest
         swift-version:
-          - '5.9'
+          - '6.0'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}
@@ -81,9 +101,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - macOS-13
+          - macOS-latest
         swift-version:
-          - '5.9'
+          - '6.0'
         swift-compat-ver:
           - '5'
     runs-on: ${{ matrix.os }}

@@ -9,3 +9,4 @@ DerivedData/
 
 *.xcodeproj
 *.xcworkspace
+Derived/

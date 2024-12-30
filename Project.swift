@@ -5,6 +5,6 @@ let project = Project(name: "Path", targets: [
         "Sources/Path/**/*.swift",
     ]),
     .target(name: "PathTests", destinations: .macOS, product: .unitTests, bundleId: "dev.tuist.PathTests", sources: [
-        "Tests/PathTests/**/*.swift"
-    ], dependencies: [.target(name: "Path")])
+        "Tests/PathTests/**/*.swift",
+    ], dependencies: [.target(name: "Path")]),
 ])
