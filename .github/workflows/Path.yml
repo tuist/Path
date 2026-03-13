@@ -73,7 +73,7 @@ jobs:
       - uses: SwiftyLab/setup-swift@latest
         with:
           swift-version: ${{ matrix.swift-version }}
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v4
       - name: Build
         run: tuist build
   lint:
@@ -92,6 +92,6 @@ jobs:
       - uses: SwiftyLab/setup-swift@latest
         with:
           swift-version: ${{ matrix.swift-version }}
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v4
       - name: Lint
         run: mise run lint
